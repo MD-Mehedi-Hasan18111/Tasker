@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.customModalStyle {
+  background-color: #191d26;
+  border-radius: 20px;
+}

@@ -1,3 +1,4 @@
+import Footer from "./component/Footer";
 import Hero from "./component/Hero";
 import Navbar from "./component/Navbar";
 import TaskBoard from "./component/TaskBoard/TaskBoard";
@@ -10,6 +11,7 @@ export default function App() {
         <Hero />
         <TaskBoard />
       </div>
+      <Footer />
     </>
   );
 }
