@@ -28,6 +28,14 @@ export default function TaskBoard() {
     setTaskToUpdate(null);
   };
 
+  const handleDeleteTask = (taskId) => {
+    setTasks(tasks?.filter((task) => task?.id !== taskId));
+  };
+
+  const handleDeleteAllTask = () => {
+    setTasks([]);
+  };
+
   return (
     <section className="mb-20 md:px-10 px-5" id="tasks">
       <TaskModal
@@ -45,6 +53,7 @@ export default function TaskBoard() {
               setShowModal(true);
               setTaskToUpdate(null);
             }}
+            handleDeleteAllTask={handleDeleteAllTask}
           />
 
           {tasks?.length > 0 ? (
@@ -52,6 +61,7 @@ export default function TaskBoard() {
               tasks={tasks}
               onEditClick={() => setShowModal(true)}
               setTaskToUpdate={setTaskToUpdate}
+              handleDeleteTask={handleDeleteTask}
             />
           ) : (
             <NoTaskFound />
