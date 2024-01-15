@@ -36,6 +36,34 @@ export default function TaskBoard() {
     setTasks([]);
   };
 
+  function handleFavorite(taskId) {
+    // This portion of the commented code is not fully perfect. Here
+    // we are not doing the deep cloning of the tasks array. The tasks array has
+    // objects inside, while using the spread operator, it will only make the shallow copy.
+    // But we need to do the deep copy.
+
+    // We are not removing this commented code as it was part of the recording.
+    // But the same code is now made better and written below.
+    /*
+        const taskIndex = tasks.findIndex((task) => task.id === taskId);
+        const newTasks = [...tasks];
+        newTasks[taskIndex].isFavorite = !newTasks[taskIndex].isFavorite;
+        setTasks(newTasks);
+        */
+
+    // The better way of managing updates in the object within an array as a
+    // state in react.
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === taskId) {
+          return { ...task, isFavorite: !task.isFavorite };
+        } else {
+          return task;
+        }
+      })
+    );
+  }
+
   return (
     <section className="mb-20 md:px-10 px-5" id="tasks">
       <TaskModal
@@ -62,6 +90,7 @@ export default function TaskBoard() {
               onEditClick={() => setShowModal(true)}
               setTaskToUpdate={setTaskToUpdate}
               handleDeleteTask={handleDeleteTask}
+              onFav={handleFavorite}
             />
           ) : (
             <NoTaskFound />
