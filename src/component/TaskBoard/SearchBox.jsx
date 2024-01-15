@@ -1,6 +1,6 @@
 export default function SearchBox() {
   return (
-    <div className="p-2 flex justify-end">
+    <div className="p-2 flex justify-end mb-[10px]">
       <form>
         <div className="flex">
           <div className="relative overflow-hidden rounded-lg text-gray-50 md:min-w-[380px] lg:min-w-[440px]">
